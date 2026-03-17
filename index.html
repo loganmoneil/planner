@@ -216,7 +216,7 @@
     background: #fff;
     border: 1px solid var(--rule);
     border-radius: 6px 6px 0 0;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: var(--shadow);
   }
   .day-col {
@@ -338,7 +338,12 @@
     border-top: none;
     border-radius: 0 0 6px 6px;
     box-shadow: var(--shadow);
-    overflow: hidden;
+    overflow: visible;
+  }
+  .habit-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
   }
   .habit-tracker-header {
     background: var(--paper-2);
@@ -367,11 +372,10 @@
     transition: color 0.15s, border-color 0.15s;
   }
   .habit-add-btn:hover { color: var(--accent); border-color: var(--accent); }
-  .habit-table-wrap { overflow-x: auto; }
   .habit-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 500px;
+    min-width: 420px;
   }
   .habit-table th {
     font-size: 10px;
