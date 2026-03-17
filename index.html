@@ -1494,7 +1494,7 @@ function initOAuth(clientId) {
   if (!clientId || !window.google) return;
   tokenClient = google.accounts.oauth2.initTokenClient({
     client_id: clientId,
-    scope: 'https://www.googleapis.com/auth/spreadsheets',
+    scope: 'https://www.googleapis.com/auth/drive.file',
     callback: (resp) => {
       if (resp.error) {
         showStatus('Google sign-in failed: ' + resp.error, 'error', 4000);
