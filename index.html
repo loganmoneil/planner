@@ -88,29 +88,6 @@
     margin: 0 12px;
   }
 
-  /* ── Mobile topbar fix ── */
-  @media (max-width: 767px) {
-    .topbar { padding: 0 0.75rem; height: 48px; }
-    .topbar-title { font-size: 16px; }
-    .topbar-nav { gap: 5px; }
-    .topbar-nav .btn { padding: 5px 10px; font-size: 12px; }
-    .week-label { display: none; }
-    .week-banner {
-      display: block;
-      background: var(--paper-2);
-      border-bottom: 1px solid var(--rule);
-      text-align: center;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink-2);
-      padding: 5px 1rem;
-      letter-spacing: 0.03em;
-    }
-  }
-  @media (min-width: 768px) {
-    .week-banner { display: none; }
-  }
-
   /* ── Config panel ── */
   .config-overlay {
     display: none;
@@ -221,7 +198,6 @@
   @keyframes spin { to { transform: rotate(360deg); } }
 
   /* ── Main layout — mobile first ── */
-  .left-col, .right-panel { min-width: 0; max-width: 100%; }
   .planner {
     max-width: 1400px;
     margin: 0 auto;
@@ -240,7 +216,7 @@
     background: #fff;
     border: 1px solid var(--rule);
     border-radius: 6px 6px 0 0;
-    overflow: visible;
+    overflow: hidden;
     box-shadow: var(--shadow);
   }
   .day-col {
@@ -362,13 +338,7 @@
     border-top: none;
     border-radius: 0 0 6px 6px;
     box-shadow: var(--shadow);
-    overflow: visible;
-  }
-  .habit-table-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-    display: block;
+    overflow: hidden;
   }
   .habit-tracker-header {
     background: var(--paper-2);
@@ -397,9 +367,11 @@
     transition: color 0.15s, border-color 0.15s;
   }
   .habit-add-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .habit-table-wrap { overflow-x: auto; }
   .habit-table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 500px;
   }
   .habit-table th {
     font-size: 10px;
@@ -916,8 +888,6 @@
 
 <!-- Status bar -->
 <div class="statusbar hidden" id="statusbar"></div>
-<!-- Mobile week banner -->
-<div class="week-banner" id="week-banner"></div>
 
 <!-- Config overlay -->
 <div class="config-overlay" id="config-overlay">
@@ -964,7 +934,7 @@
 <!-- Planner -->
 <div class="planner">
   <!-- Left: days + habit tracker + bottom row -->
-  <div class="left-col">
+  <div>
     <div class="days-grid" id="days-grid"></div>
     <div class="habit-tracker">
       <div class="habit-tracker-header">
@@ -1116,10 +1086,8 @@ function renderDays() {
   // Update week label
   const end = new Date(weekStart);
   end.setDate(weekStart.getDate() + 6);
-  const weekText = `${MONTHS_SHORT[weekStart.getMonth()]} ${weekStart.getDate()} – ${MONTHS_SHORT[end.getMonth()]} ${end.getDate()}, ${end.getFullYear()}`;
-  document.getElementById('week-label').textContent = weekText;
-  const banner = document.getElementById('week-banner');
-  if (banner) banner.textContent = weekText;
+  document.getElementById('week-label').textContent =
+    `${MONTHS_SHORT[weekStart.getMonth()]} ${weekStart.getDate()} – ${MONTHS_SHORT[end.getMonth()]} ${end.getDate()}, ${end.getFullYear()}`;
 }
 
 // ── Mini calendar ──────────────────────────────────────────────────
