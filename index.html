@@ -869,27 +869,6 @@
     .week-section:last-child { border-right: none; }
     .three-col-cards { grid-template-columns: repeat(3, 1fr); }
   }
-
-  /* ── Mobile only (phones) ── */
-  @media (max-width: 767px) {
-    .topbar { padding: 0 0.75rem; }
-    .topbar-nav { gap: 4px; }
-    .topbar-nav .btn { padding: 5px 8px; font-size: 12px; }
-    .week-label { display: none; }
-    .week-banner {
-      display: block;
-      background: var(--paper-2);
-      border-bottom: 1px solid var(--rule);
-      text-align: center;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink-2);
-      padding: 5px 1rem;
-    }
-    .habit-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  }
-  @media (min-width: 768px) { .week-banner { display: none; } }
-
 </style>
 </head>
 <body>
@@ -909,8 +888,6 @@
 
 <!-- Status bar -->
 <div class="statusbar hidden" id="statusbar"></div>
-<!-- Mobile week banner -->
-<div class="week-banner" id="week-banner" style="display:none"></div>
 
 <!-- Config overlay -->
 <div class="config-overlay" id="config-overlay">
@@ -1109,10 +1086,8 @@ function renderDays() {
   // Update week label
   const end = new Date(weekStart);
   end.setDate(weekStart.getDate() + 6);
-  const weekText = `${MONTHS_SHORT[weekStart.getMonth()]} ${weekStart.getDate()} – ${MONTHS_SHORT[end.getMonth()]} ${end.getDate()}, ${end.getFullYear()}`;
-  document.getElementById('week-label').textContent = weekText;
-  const banner = document.getElementById('week-banner');
-  if (banner) banner.textContent = weekText;
+  document.getElementById('week-label').textContent =
+    `${MONTHS_SHORT[weekStart.getMonth()]} ${weekStart.getDate()} – ${MONTHS_SHORT[end.getMonth()]} ${end.getDate()}, ${end.getFullYear()}`;
 }
 
 // ── Mini calendar ──────────────────────────────────────────────────
