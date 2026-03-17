@@ -198,6 +198,7 @@
   @keyframes spin { to { transform: rotate(360deg); } }
 
   /* ── Main layout — mobile first ── */
+  .left-col, .right-panel { min-width: 0; max-width: 100%; }
   .planner {
     max-width: 1400px;
     margin: 0 auto;
@@ -343,7 +344,8 @@
   .habit-table-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    max-width: 100%;
+    width: 100%;
+    display: block;
   }
   .habit-tracker-header {
     background: var(--paper-2);
@@ -375,7 +377,6 @@
   .habit-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 420px;
   }
   .habit-table th {
     font-size: 10px;
@@ -938,7 +939,7 @@
 <!-- Planner -->
 <div class="planner">
   <!-- Left: days + habit tracker + bottom row -->
-  <div>
+  <div class="left-col">
     <div class="days-grid" id="days-grid"></div>
     <div class="habit-tracker">
       <div class="habit-tracker-header">
