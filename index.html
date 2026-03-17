@@ -871,13 +871,25 @@
     .week-label { display: none; }
     .btn { padding: 5px 10px; font-size: 12px; }
 
-    .planner { padding: 0.5rem 0.5rem 3rem; gap: 0.75rem; }
+    .planner {
+      padding: 0.5rem 0.5rem 3rem !important;
+      gap: 0.75rem !important;
+      grid-template-columns: 1fr !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+    }
 
-    .days-grid { grid-template-columns: 1fr; border-radius: 6px 6px 0 0; }
+    .days-grid {
+      grid-template-columns: 1fr !important;
+      border-radius: 6px 6px 0 0;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
     .day-col {
-      border-right: none;
+      border-right: none !important;
       border-bottom: 1px solid var(--rule);
-      min-height: auto;
+      min-height: auto !important;
+      max-width: 100% !important;
     }
     .day-col:last-child { border-bottom: none; }
     .day-header {
@@ -894,25 +906,33 @@
     .hydration-row { padding: 5px 14px 4px; }
     .drop { width: 11px; height: 11px; }
 
-    /* Habit tracker — scrollable internally, doesn't push page wide */
-    .habit-tracker { border-radius: 0; max-width: 100%; }
+    .habit-tracker { border-radius: 0; max-width: 100% !important; }
     .habit-table-wrap {
-      overflow-x: auto;
+      overflow-x: auto !important;
       -webkit-overflow-scrolling: touch;
-      max-width: 100%;
+      max-width: 100% !important;
     }
-    .habit-table { min-width: 480px; }
+    .habit-table { min-width: 400px; }
 
-    .week-bottom { grid-template-columns: 1fr; border-radius: 0; }
+    .week-bottom {
+      grid-template-columns: 1fr !important;
+      border-radius: 0;
+      max-width: 100% !important;
+    }
     .week-section { border-right: none; border-bottom: 1px solid var(--rule); }
     .week-section:last-child { border-bottom: none; }
 
-    .three-col-cards { grid-template-columns: 1fr; margin-top: 0.75rem; }
-    .right-panel { grid-template-columns: 1fr; }
+    .three-col-cards {
+      grid-template-columns: 1fr !important;
+      margin-top: 0.75rem;
+      max-width: 100% !important;
+    }
 
-    /* Mini calendar — constrain columns so it doesn't overflow */
-    .mini-cal { max-width: 100%; }
-    .cal-grid { grid-template-columns: repeat(7, 1fr); }
+    .right-panel {
+      grid-template-columns: 1fr !important;
+      max-width: 100% !important;
+    }
+    .mini-cal { max-width: 100% !important; }
     .cal-day { font-size: 11px; padding: 4px 1px; }
     .cal-dow { font-size: 9px; }
 
