@@ -88,6 +88,29 @@
     margin: 0 12px;
   }
 
+  /* ── Mobile topbar fix ── */
+  @media (max-width: 767px) {
+    .topbar { padding: 0 0.75rem; height: 48px; }
+    .topbar-title { font-size: 16px; }
+    .topbar-nav { gap: 5px; }
+    .topbar-nav .btn { padding: 5px 10px; font-size: 12px; }
+    .week-label { display: none; }
+    .week-banner {
+      display: block;
+      background: var(--paper-2);
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-2);
+      padding: 5px 1rem;
+      letter-spacing: 0.03em;
+    }
+  }
+  @media (min-width: 768px) {
+    .week-banner { display: none; }
+  }
+
   /* ── Config panel ── */
   .config-overlay {
     display: none;
@@ -893,6 +916,8 @@
 
 <!-- Status bar -->
 <div class="statusbar hidden" id="statusbar"></div>
+<!-- Mobile week banner -->
+<div class="week-banner" id="week-banner"></div>
 
 <!-- Config overlay -->
 <div class="config-overlay" id="config-overlay">
@@ -1091,8 +1116,10 @@ function renderDays() {
   // Update week label
   const end = new Date(weekStart);
   end.setDate(weekStart.getDate() + 6);
-  document.getElementById('week-label').textContent =
-    `${MONTHS_SHORT[weekStart.getMonth()]} ${weekStart.getDate()} – ${MONTHS_SHORT[end.getMonth()]} ${end.getDate()}, ${end.getFullYear()}`;
+  const weekText = `${MONTHS_SHORT[weekStart.getMonth()]} ${weekStart.getDate()} – ${MONTHS_SHORT[end.getMonth()]} ${end.getDate()}, ${end.getFullYear()}`;
+  document.getElementById('week-label').textContent = weekText;
+  const banner = document.getElementById('week-banner');
+  if (banner) banner.textContent = weekText;
 }
 
 // ── Mini calendar ──────────────────────────────────────────────────
